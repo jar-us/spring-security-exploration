@@ -1,1 +1,6 @@
-rootProject.name = 'security-ordering-demo'
+rootProject.name = 'spring-security-exploration'
+
+// Include the existing project as a subproject
+include 'filter-ordering-demo'
+// Include a new project for OncePerRequestFilter exploration
+include 'once-per-request-filter-demo'

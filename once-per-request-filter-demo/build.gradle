@@ -1,0 +1,6 @@
+// Once Per Request Filter Demo subproject
+// This project demonstrates the usage of OncePerRequestFilter in Spring Security
+
+description = 'Demonstrates Spring Security OncePerRequestFilter'
+
+// Any specific dependencies or configurations for this subproject can be added here

@@ -1,31 +1,36 @@
-# Spring Security Filter Ordering Demo
+# Spring Security Exploration
 
-This repository contains a practical Spring Boot application designed to illustrate and explore the critical concept of filter ordering within Spring Security. It demonstrates why predictable component execution is vital in complex frameworks and how Spring provides mechanisms to achieve it.
+This repository contains multiple Spring Boot applications designed to illustrate and explore various concepts within Spring Security. Each subproject focuses on a specific aspect of Spring Security, demonstrating why predictable component execution is vital in complex frameworks and how Spring provides mechanisms to achieve it.
+
+## Subprojects
+
+1. **filter-ordering-demo**: Explores the critical concept of filter ordering within Spring Security.
+2. **once-per-request-filter-demo**: Demonstrates the usage and benefits of OncePerRequestFilter in Spring Security.
 
 ## Table of Contents
 
-- [Spring Security Filter Ordering Demo](#spring-security-filter-ordering-demo)
+- [Spring Security Exploration](#spring-security-exploration)
+    - [Subprojects](#subprojects)
     - [Table of Contents](#table-of-contents)
     - [Project Overview](#project-overview)
-    - [Core Concepts Demonstrated](#core-concepts-demonstrated)
-    - [For a Deeper Dive](#for-a-deeper-dive)
-    - [Real-World Use Cases Explored](#real-world-use-cases-explored)
-    - [How to Run the Application](#how-to-run-the-application)
+    - [Subproject Details](#subproject-details)
+        - [Filter Ordering Demo](#filter-ordering-demo)
+        - [Once Per Request Filter Demo](#once-per-request-filter-demo)
+    - [How to Run the Applications](#how-to-run-the-applications)
         - [Prerequisites](#prerequisites)
         - [Steps](#steps)
-    - [How to Explore the Examples](#how-to-explore-the-examples)
-        - [Default Spring Security Behavior](#default-spring-security-behavior)
-        - [Observing the Filter Chain](#observing-the-filter-chain)
-        - [Custom Filter Placement (`addFilter*` methods)](#custom-filter-placement-addfilter-methods)
-        - [Custom Filter Ordering (`@Order` and `Ordered`)](#custom-filter-ordering-order-and-ordered)
     - [Technologies Used](#technologies-used)
     - [License](#license)
 
 ## Project Overview
 
-This project serves as a hands-on guide to understanding filter ordering in Spring Security. It addresses the problem of non-deterministic component execution, where the order of framework-internal and custom components can be unpredictable without explicit control. The application showcases how Spring's ordering mechanisms provide the necessary control for building robust and secure systems.
+This project serves as a hands-on guide to understanding various aspects of Spring Security. It addresses common challenges in implementing security in Spring applications and demonstrates how Spring Security provides mechanisms to build robust and secure systems.
 
-## Core Concepts Demonstrated
+## Subproject Details
+
+### Filter Ordering Demo
+
+The filter-ordering-demo subproject focuses on the critical concept of filter ordering within Spring Security. It demonstrates:
 
 * **The Problem of Non-Deterministic Ordering:** How components with the same default precedence can lead to unpredictable execution sequences.
 * **The Solution: Explicit Ordering:** How assigning specific precedence values and using Spring's ordering mechanisms resolve this unpredictability.
@@ -34,24 +39,34 @@ This project serves as a hands-on guide to understanding filter ordering in Spri
     * `Ordered` Interface: An alternative for defining component order programmatically.
     * `HttpSecurity.addFilterBefore/After/At` Methods: For precise placement of custom filters relative to known Spring Security filters within the filter chain.
 
----
-
-## For a Deeper Dive
-
-For a comprehensive explanation of the concepts, problem, solution, and detailed analysis of Spring Security filter ordering, refer to the **[Comprehensive Guide to Spring Security Filter Ordering](https://docs.google.com/document/d/1mAi2odczzOpJoWO3NAo4jUo6HOoSlgE3Q1H6ZExWhOo/edit?usp=sharing)**.
-
----
-
-## Real-World Use Cases Explored
-
-The examples in this project are designed to provide practical insights into scenarios where filter ordering is crucial:
+**Real-World Use Cases:**
 
 * **API Gateway / Microservice Edge Authentication & Request Enrichment:** Ensuring user details are injected into requests *after* successful authentication.
 * **Custom Rate Limiting / DDoS Protection Integration:** Applying granular rate limits based on authenticated user attributes.
 * **Multi-Tenancy Resolution for Database Routing:** Dynamically routing database operations to the correct tenant's data source *after* tenant identification.
 * **Custom CSRF Token Validation and Management:** Integrating custom CSRF logic precisely within the security chain.
 
-## How to Run the Application
+For a comprehensive explanation of filter ordering concepts, refer to the **[Comprehensive Guide to Spring Security Filter Ordering](https://docs.google.com/document/d/1mAi2odczzOpJoWO3NAo4jUo6HOoSlgE3Q1H6ZExWhOo/edit?usp=sharing)**.
+
+### Once Per Request Filter Demo
+
+The once-per-request-filter-demo subproject demonstrates the usage and benefits of OncePerRequestFilter in Spring Security. It showcases:
+
+* **The Problem of Multiple Filter Execution:** How standard filters can be executed multiple times in certain scenarios.
+* **The Solution: OncePerRequestFilter:** How this specialized filter ensures exactly one execution per request.
+* **Key Features of OncePerRequestFilter:**
+    * Guaranteed single execution per request
+    * Conditional filtering with `shouldNotFilter()`
+    * HTTP-specific request/response handling
+
+**Real-World Use Cases:**
+
+* **Authentication Token Validation:** Ensuring JWT or OAuth token validation happens exactly once per request.
+* **Request Logging and Auditing:** Capturing request details for security auditing without duplicate entries.
+* **Cross-Origin Resource Sharing (CORS):** Applying CORS headers consistently without duplication.
+* **Request Transformation:** Modifying request attributes or headers exactly once before processing.
+
+## How to Run the Applications
 
 ### Prerequisites
 
@@ -62,51 +77,52 @@ The examples in this project are designed to provide practical insights into sce
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/security-ordering-demo.git](https://github.com/YOUR_USERNAME/security-ordering-demo.git)
-    cd security-ordering-demo
+    git clone [https://github.com/YOUR_USERNAME/spring-security-exploration.git](https://github.com/YOUR_USERNAME/spring-security-exploration.git)
+    cd spring-security-exploration
     ```
     *(Replace `YOUR_USERNAME` with your actual GitHub username or the repository's path)*
 
-2.  **Build the Project:**
+2.  **Build All Projects:**
     ```bash
     ./gradlew clean build
     ```
     *(For Windows, use `gradlew.bat clean build`)*
 
-3.  **Run the Application:**
-    You can run the Spring Boot application using the Gradle wrapper:
+3.  **Run a Specific Subproject:**
+
+    **Filter Ordering Demo:**
     ```bash
-    ./gradlew bootRun
+    ./gradlew filter-ordering-demo:bootRun
     ```
-    *(For Windows, use `gradlew.bat bootRun`)*
+    *(For Windows, use `gradlew.bat filter-ordering-demo:bootRun`)*
 
-    Alternatively, you can run it directly from your IDE by locating the `SecurityOrderingDemoApplication.java` file (in `src/main/java/com/example/securityorderingdemo`) and executing its `main` method.
+    This application runs on port 8080 by default.
 
-## How to Explore the Examples
+    **Once Per Request Filter Demo:**
+    ```bash
+    ./gradlew once-per-request-filter-demo:bootRun
+    ```
+    *(For Windows, use `gradlew.bat once-per-request-filter-demo:bootRun`)*
 
-Once the application is running (typically on `http://localhost:8080`), observe your console output and interact with the application as described below.
+    This application runs on port 8081 by default.
 
-### Default Spring Security Behavior
+    Alternatively, you can run either application directly from your IDE by locating the respective main application class and executing its `main` method.
 
-* Upon startup, Spring Security will generate a default password for the `user` account. Look for a line similar to: `Using generated security password: [a long alphanumeric string]`.
-* Access `http://localhost:8080/`. You will be redirected to a login page. Use username `user` and the generated password.
-* Access `http://localhost:8080/public`. This endpoint is configured to be publicly accessible without authentication.
-* Access `http://localhost:8080/private`. This endpoint requires authentication.
+4.  **Exploring the Applications:**
 
-### Observing the Filter Chain
+    **Filter Ordering Demo (port 8080):**
+    * Access `http://localhost:8080/` - You'll be redirected to a login page
+    * Use username `admin` and password `admin123` to log in
+    * Access `http://localhost:8080/public` - Publicly accessible without authentication
+    * Access `http://localhost:8080/private` - Requires authentication
+    * Observe the console logs to see the filter ordering in action
 
-* When the application starts, the console output will display a detailed log of the Spring Security filter chain, including your custom filters, under the heading `--- Spring Security Filter Chain Order ---`. This provides a static view of the configured order.
-
-### Custom Filter Placement (`addFilter*` methods)
-
-* The `SecurityConfig.java` file demonstrates the use of `http.addFilterBefore()`, `http.addFilterAt()`, and `http.addFilterAfter()` to place `MyCustomFilter` instances relative to core Spring Security filters like `UsernamePasswordAuthenticationFilter` and `AuthorizationFilter`.
-* Access `http://localhost:8080/private` (log in if necessary). Observe the console logs generated by `MyCustomFilter` instances. Their "Before processing" and "After processing" messages will appear in the order defined by these methods, relative to other Spring Security logs.
-
-### Custom Filter Ordering (`@Order` and `Ordered`)
-
-* The `MyOrderedFilterA.java` (using `@Order(2)`) and `MyOrderedFilterB.java` (implementing `Ordered` with `getOrder() = 1`) are registered as general Servlet filters.
-* **Important:** You will *not* see these filters listed in the `--- Spring Security Filter Chain Order ---` output. This is because they operate at a higher level in the Servlet filter chain, *before* Spring Security's main `FilterChainProxy` takes over.
-* Access any endpoint (e.g., `http://localhost:8080/private`). Observe the very first logs in your console output. You should see `MyOrderedFilterB`'s logs appearing *before* `MyOrderedFilterA`'s logs, demonstrating that a lower order value (1 vs. 2) results in earlier execution.
+    **Once Per Request Filter Demo (port 8081):**
+    * Access `http://localhost:8081/` - You'll be redirected to a login page
+    * Use username `admin` and password `admin123` to log in
+    * Access `http://localhost:8081/public` - Publicly accessible and bypasses the OncePerRequestFilter (due to shouldNotFilter)
+    * Access `http://localhost:8081/private` - Requires authentication and passes through the OncePerRequestFilter
+    * Observe the console logs to see the OncePerRequestFilter in action
 
 ## Technologies Used
 

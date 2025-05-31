@@ -1,0 +1,6 @@
+// Filter Ordering Demo subproject
+// This project demonstrates different approaches to ordering filters in Spring Security
+
+description = 'Demonstrates Spring Security filter ordering'
+
+// Any specific dependencies or configurations for this subproject can be added here
