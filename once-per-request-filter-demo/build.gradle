@@ -4,3 +4,10 @@
 description = 'Demonstrates Spring Security OncePerRequestFilter'
 
 // Any specific dependencies or configurations for this subproject can be added here
+
+// add themeleaf dependency
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Add any additional dependencies required for this subproject
+}
