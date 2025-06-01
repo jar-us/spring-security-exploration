@@ -117,9 +117,3 @@ When creating new users, passwords should be stored in BCrypt encoded format. Yo
    ```sql
    INSERT INTO users (username, password, role) VALUES ('newuser', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG', 'ROLE_USER');
    ```
-
-## Additional Resources
-
-For a comprehensive guide on Spring Security implementation patterns and best practices, refer to our detailed documentation:
-
-[Spring Security Implementation Patterns](https://docs.google.com/document/d/1-znTlqOMOscj2BuxpnQw2bKGLwH9kTbs64Rdm8V0CNg/edit?usp=sharing)
