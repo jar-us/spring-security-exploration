@@ -4,3 +4,5 @@ rootProject.name = 'spring-security-exploration'
 include 'filter-ordering-demo'
 // Include a new project for OncePerRequestFilter exploration
 include 'once-per-request-filter-demo'
+// Include a new project for database exploration
+include 'database-exploration-demo'
