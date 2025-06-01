@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Welcome to the Home Page!</h1>
+<p>This page is accessible to everyone.</p>
+<ul>
+    <li><a th:href="@{/login}">Login</a></li>
+    <li><a th:href="@{/dashboard}">Go to Dashboard (Secured)</a></li>
+    <li><a th:href="@{/admin}">Go to Admin Page (Admin Only)</a></li>
+</ul>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

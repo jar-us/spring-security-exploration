@@ -10,7 +10,8 @@ component execution is vital in complex frameworks and how Spring provides mecha
     - [Subproject Details](#subproject-details)
         - [Filter Ordering Demo](#filter-ordering-demo)
         - [Once Per Request Filter Demo](#once-per-request-filter-demo)
-    - [Technologies Used](#technologies-used)
+        - [Database Exploration Demo](#database-exploration-demo)
+      - [Technologies Used](#technologies-used)
     - [License](#license)
 
 ## Subproject Details
@@ -20,18 +21,23 @@ component execution is vital in complex frameworks and how Spring provides mecha
 The filter-ordering-demo subproject focuses on the critical concept of filter ordering within Spring Security. It
 demonstrates:
 
-For a comprehensive explanation of filter ordering concepts, refer to the *
-*[Comprehensive Guide to Spring Security Filter Ordering](https://docs.google.com/document/d/1mAi2odczzOpJoWO3NAo4jUo6HOoSlgE3Q1H6ZExWhOo/edit?usp=sharing)
-**.
+For a comprehensive explanation of filter ordering concepts, refer to the 
+**[Comprehensive Guide to Spring Security Filter Ordering](https://docs.google.com/document/d/1mAi2odczzOpJoWO3NAo4jUo6HOoSlgE3Q1H6ZExWhOo/edit?usp=sharing)**.
 
 ### Once Per Request Filter Demo
 
 The once-per-request-filter-demo subproject demonstrates the usage and benefits of OncePerRequestFilter in Spring
 Security.
 
-For a comprehensive explanation of filter ordering concepts, refer to the *
-*[Web Filter Once Per Request Mechanism in Spring](https://docs.google.com/document/d/1H8swj2vjcs0CGjZ9z8gN5KYxJ3GYpBs9uXdUJOG45xA/edit?usp=sharing)
-**.
+For a comprehensive explanation of filter ordering concepts, refer to the 
+**[Web Filter Once Per Request Mechanism in Spring](https://docs.google.com/document/d/1H8swj2vjcs0CGjZ9z8gN5KYxJ3GYpBs9uXdUJOG45xA/edit?usp=sharing)**.
+
+### Database Exploration Demo
+
+The database-exploration-demo subproject demonstrates how to implement database-backed authentication and authorization with Spring Security. It showcases:
+
+For a comprehensive guide on Spring Security implementation patterns and best practices, refer to our detailed documentation:
+**[Spring Security Implementation Patterns](https://docs.google.com/document/d/1-znTlqOMOscj2BuxpnQw2bKGLwH9kTbs64Rdm8V0CNg/edit?usp=sharing)**.
 
 ## Technologies Used
 
